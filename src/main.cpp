@@ -3,7 +3,8 @@
 #include <iostream>
 
 #define MONO_RESULT "sol_mono_objective.txt"
-#define MULTI_RESULT "sol_bi_objective.txt"
+#define BI_RESULT "sol_bi_objective.dat"
+#define TRI_RESULT "sol_tri_objective.dat"
 
 using namespace std;
 
@@ -19,15 +20,21 @@ int main(int argc, char const *argv[])
 	}
 	else if (argc == 4){
 		cout << "TSP bi-objective" << endl;
-		AxisGoal ag1(argv[1]);
-		AxisGoal ag2(argv[2]);
-		m_tsp.add_axisgoal(&ag1);
-		m_tsp.add_axisgoal(&ag2);
+		m_tsp.add_axisgoal(new AxisGoal(argv[1]));
+		m_tsp.add_axisgoal(new AxisGoal(argv[2]));
 		m_tsp.find_solutions(atoi(argv[3]));
-		m_tsp.write_outfile(MULTI_RESULT);
+		m_tsp.write_outfile(BI_RESULT);
+	}
+	else if (argc == 5){
+		cout << "TSP tri-objective" << endl;
+		m_tsp.add_axisgoal(new AxisGoal(argv[1]));
+		m_tsp.add_axisgoal(new AxisGoal(argv[2]));
+		m_tsp.add_axisgoal(new AxisGoal(argv[3]));
+		m_tsp.find_solutions(atoi(argv[4]));
+		m_tsp.write_outfile(TRI_RESULT);
 	}
 	else{
-		cout << "Usage: tsp.out file1.txt [file2.txt nb_sol]" << endl;
+		cout << "Usage: tsp.out file1.txt [file2.txt [file3.txt] nb_sol]" << endl;
 		cout << "Ex: " << endl;
 		cout << "mono: ./tsp.out kroA100.tsp" << endl;
 		cout << "multi: ./tsp.out kroA100.tsp kroB100.tst 200" << endl;
