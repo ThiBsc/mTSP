@@ -1,5 +1,5 @@
 # mTSP
-[![Build Status](https://travis-ci.org/thibDev/mTSP.svg?branch=master)](https://travis-ci.org/thibDev/mTSP)  
+[![Build Status](https://travis-ci.org/ThiBsc/mTSP.svg?branch=master)](https://travis-ci.org/ThiBsc/mTSP)  
 Greedy algorithm to the multiple Traveling Salesman Problem
 ### Compile
 Run ```make all```
