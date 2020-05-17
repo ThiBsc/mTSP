@@ -11,11 +11,19 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
 	mtsp m_tsp;
-	if (argc == 2){
+	if (argc >= 2 && argc <= 3){
 		cout << "TSP mono-objective" << endl;
 		AxisGoal ag1(argv[1]);
 		m_tsp.add_axisgoal(&ag1);
-		m_tsp.two_opt(ag1);
+		if (argc == 3){
+			int limit = std::atoi(argv[2]);
+			do {
+				m_tsp.two_opt(ag1);
+				//cout << m_tsp.getSolutionCost(0) << endl;
+			} while (m_tsp.getSolutionCost(0) >= limit);
+		} else {
+			m_tsp.two_opt(ag1);
+		}
 		m_tsp.write_outfile(MONO_RESULT);
 	}
 	else if (argc == 4){
@@ -36,7 +44,7 @@ int main(int argc, char const *argv[])
 	else{
 		cout << "Usage: tsp.out file1.txt [file2.txt [file3.txt] nb_sol]" << endl;
 		cout << "Ex: " << endl;
-		cout << "mono: ./tsp.out kroA100.tsp" << endl;
+		cout << "mono: ./tsp.out kroA100.tsp [UNDER_LIMIT]" << endl;
 		cout << "multi: ./tsp.out kroA100.tsp kroB100.tst 200" << endl;
 	}
 

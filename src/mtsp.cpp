@@ -193,3 +193,10 @@ void mtsp::init()
 	std::iota(sol_current.begin(), sol_current.end(), 0);
 	shuffle_sol();
 }
+
+double mtsp::getSolutionCost(int sol_idx)
+{
+	Solution *s = solutions[sol_idx];
+	double cost = s->get_axis_eval().front();
+	return cost;
+}

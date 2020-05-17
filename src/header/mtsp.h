@@ -20,6 +20,7 @@ public:
 	bool cmp_sol(Solution& sol);	
 	void find_solutions(int nsol = -1);	
 	void write_outfile(const char* filename);
+	double getSolutionCost(int sol_idx);
 	
 private: 
 	int consistency_check;

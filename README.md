@@ -4,11 +4,15 @@ Greedy algorithm to the multiple Traveling Salesman Problem
 ### Compile
 Run ```make all```
 ### Use
-- Mono: ```./tsp.out <tsp_file>```, generate file _sol_mono_objective.txt_
+- Mono: ```./tsp.out <tsp_file> [UNDER_LIMIT]```, generate file _sol_mono_objective.txt_
 - Multi: ```./tsp.out <tsp_file1> <tsp_file2> [<tsp_file3>] 100```, where 100 is the number of wanted solutions. It's generate a sol_[bi/tri]_objective.dat (Higher is the number of wanted solutions, slower is the answer)
 ### Result
 #### Mono
-_sol_mono_objective.txt_ contain the solution cost returned by ```2-opt``` and the path order
+_sol_mono_objective.txt_ contain the solution cost returned by ```2-opt``` and the path order.  
+If you specify the `UNDER_LIMIT` parameter, it will run until reach you limit cost.
+```sh
+./tsp.out test_file/onurjuzelle.txt 34000
+```
 #### Multi
 ##### bi-objective
 ```
